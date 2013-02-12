@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Blend Modes &amp; Hue Rotate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>CSS Blend Modes &amp; Hue Rotate Playin'</h1>
+            <figure class="nyc">
+                <img class="top" src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
+                <img class="middle" src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
+                <img class="base "src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
+            </figure>
+            <form>
+                <fieldset>
+                    <legend>Top Image</legend>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="show-img" id="top-img-show"
+                                checked data-img="top"> Show
+                        </label>
+                    </div>
+                    <div>
+                        <label for="mode-top-img">Blend mode:</label>
+                        <select id="mode-top-img" name="blend-mode" data-img="top">
+                            <option value="normal">normal</option>
+                            <option value="plus">plus</option>
+                            <option value="multiply">multiply</option>
+                            <option value="screen">screen</option>
+                            <option value="overlay">overlay</option>
+                            <option value="darken">darken</option>
+                            <option value="lighten">lighten</option>
+                            <option value="color-dodge">color-dodge</option>
+                            <option value="color-burn">color-burn</option>
+                            <option value="hard-light">hard-light</option>
+                            <option value="soft-light">soft-light</option>
+                            <option value="difference">difference</option>
+                            <option value="exclusion">exclusion</option>
+                            <option value="hue">hue</option>
+                            <option value="saturation">saturation</option>
+                            <option value="color">color</option>
+                            <option value="luminosity">luminosity</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="hue-top-img">Hue Rotate:</label>
+                        <input id="hue-top-img" data-img="top" type="range" min="0" max="360" value="0">
+                        <b data-range="hue-top-img" class="hue-degree"><span>0</span>deg</b>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Middle Image</legend>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="show-img" id="mid-img-show"
+                                checked data-img="middle"> Show
+                        </label>
+                    </div>
+                    <div>
+                        <label for="mode-top-img">Blend mode:</label>
+                        <select id="mode-top-img" name="blend-mode" data-img="middle">
+                            <option value="normal">normal</option>
+                            <option value="plus">plus</option>
+                            <option value="multiply">multiply</option>
+                            <option value="screen">screen</option>
+                            <option value="overlay">overlay</option>
+                            <option value="darken">darken</option>
+                            <option value="lighten">lighten</option>
+                            <option value="color-dodge">color-dodge</option>
+                            <option value="color-burn">color-burn</option>
+                            <option value="hard-light">hard-light</option>
+                            <option value="soft-light">soft-light</option>
+                            <option value="difference">difference</option>
+                            <option value="exclusion">exclusion</option>
+                            <option value="hue">hue</option>
+                            <option value="saturation">saturation</option>
+                            <option value="color">color</option>
+                            <option value="luminosity">luminosity</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="hue-middle-img">Hue Rotate:</label>
+                        <input id="hue-middle-img" data-img="middle" type="range" min="0" max="360" value="0">
+                        <b data-range="hue-middle-img" class="hue-degree"><span>0</span>deg</b>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Setup</legend>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="separate-imgs" id="separate-imgs"> Separate Images
+                            <br><i>You might not be able to see each image depending on its blend mode and the background color</i>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="background-color">Background Color:</label>
+                        <input id="background-color" type="color">
+                    </div>
+                    <div>
+                        <label for="change-img">Image:</label>
+                        <select id="change-img" name="change-img">
+                            <option value="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg">Times Square</option>
+                            <option value="http://farm3.staticflickr.com/2765/4519643728_4a0a6ec661_z.jpg">Manhattan Sunset</option>
+                            <option value="http://farm1.staticflickr.com/245/516818391_0849517be5_z.jpg">Times Square 2</option>
+                            <option value="http://farm9.staticflickr.com/8229/8435848988_7cb6088d6f_z.jpg">Subway</option>
+                            <option value="http://farm5.staticflickr.com/4152/5175761358_ebdd5c62e2_z.jpg">Flatiron</option>
+                            <option value="http://farm7.staticflickr.com/6111/6284744594_fb89b6f0da_z.jpg">Gaga</option>
+                            <option value="http://farm9.staticflickr.com/8214/8389549688_af168ccf58_z.jpg">Downtown</option>
+                            <option value="http://farm4.staticflickr.com/3294/3141445017_3925899a0b_z.jpg">Subway</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('change-img').addEventListener('change', function (e) {
+                e.preventDefault();
+
+                [].forEach.call(document.querySelectorAll('.nyc img'), function (el) {
+                    el.setAttribute('src', e.target.value);
+                });
+            }, false);
+
+            // Blending Mode
+            [].forEach.call(document.querySelectorAll('[name=blend-mode]'), function (el) {
+                var imgName = el.getAttribute('data-img'),
+                    img = document.querySelector('.' + imgName);
+
+                el.value = window.getComputedStyle(img).getPropertyValue('-webkit-blend-mode');
+
+                var onchange = function (e) {
+                    e.preventDefault();
+                    img.style.webkitBlendMode = e.target.value;
+                };
+
+                el.addEventListener('change', onchange, false);
+            });
+
+            // Hue Rotate
+            [].forEach.call(document.querySelectorAll('[type=range]'), function (el) {
+                var imgName = el.getAttribute('data-img'),
+                    img = document.querySelector('.' + imgName);
+
+                var id = el.getAttribute('id'),
+                    display = document.querySelector('[data-range=' + id + '] span');
+
+                var onchange = function (e) {
+                    var val = e.target.value;
+                    e.preventDefault();
+                    display.textContent = val;
+                    img.style.webkitFilter = 'hue-rotate' + '(' + val + 'deg)';
+                };
+
+                el.addEventListener('change', onchange, false);
+            });
+
+            // Show Hide image
+            [].forEach.call(document.querySelectorAll('[name=show-img]'), function (el) {
+                var imgName = el.getAttribute('data-img');
+
+                var onchange = function (e) {
+                    var img = document.querySelector('.' + imgName);
+                    img.classList.toggle('hidden');
+                };
+
+                el.addEventListener('change', onchange, false);
+            });
+
+            document.getElementById('separate-imgs').addEventListener('change', function (e) {
+                document.querySelector('.container').classList.toggle('separate-imgs');
+            }, false);
+
+            document.getElementById('background-color').value = '#e7e7e7';
+            document.getElementById('background-color').addEventListener('change', function (e) {
+                document.getElementsByTagName('body')[0].style.backgroundColor = e.target.value;
+            }, false);
+        </script>
+    </body>
+</html>

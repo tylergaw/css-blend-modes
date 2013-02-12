@@ -1,0 +1,94 @@
+body {
+    background-color: #f1f1f1;
+    margin: 0;
+    font-family: helvetica, arial, sans-serif;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+h1 {
+    clear: both;
+}
+
+.container {
+    margin: 1em auto;
+    min-width: 900px;
+    width: 98%;
+}
+
+form {
+    float: right;
+    width: -webkit-calc(100% - 660px);
+}
+
+fieldset {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    margin: 1.2em 0;
+}
+
+legend {
+    background-color: #f1f1f1;
+}
+
+fieldset div {
+    font-size: 0.9em;
+    padding: 0.5em 0;
+}
+
+fieldset label {
+    display: inline-block;
+    padding-right: 1.4em;
+}
+
+label i {
+    font-size: 0.8em;
+}
+
+.hue-degree {
+    font-weight: normal;
+}
+
+.nyc {
+    display: block;
+    float: left;
+    height: 480px;
+    margin: 0 0 1em 0;
+    overflow: hidden;
+    position: relative;
+    width: 640px;
+}
+
+.nyc img {
+    display: block;
+    position: absolute;
+    -webkit-transition: opacity 0.2s;
+    width: 100%;
+}
+
+.separate-imgs .nyc {
+    height: auto;
+}
+
+.separate-imgs .nyc img {
+    position: relative;
+    height: auto;
+}
+
+.top {
+    -webkit-blend-mode: overlay;
+    left: -2px;
+    z-index: 3;
+}
+
+.middle {
+    -webkit-blend-mode: screen;
+    right: -2px;
+    z-index: 2;
+}
+
+.base {
+    z-index: 1;
+}
