@@ -2,7 +2,12 @@
 [].forEach.call(document.querySelectorAll('.blend-mode-change'), function (el) {
     var target = document.querySelector(el.getAttribute('data-target'));
 
-    el.value = window.getComputedStyle(target).getPropertyValue('-webkit-blend-mode');
+    try {
+        el.value = window.getComputedStyle(target).getPropertyValue('-webkit-blend-mode');
+    }
+    catch (e) {
+        console.error('Tryin do something dumb');
+    }
 
     var onchange = function (e) {
         e.preventDefault();
@@ -13,18 +18,16 @@
 });
 
 // Hue Rotate
-[].forEach.call(document.querySelectorAll('[type=range]'), function (el) {
-    var imgName = el.getAttribute('data-img'),
-        img = document.querySelector('.' + imgName);
-
-    var id = el.getAttribute('id'),
-        display = document.querySelector('[data-range=' + id + '] span');
+[].forEach.call(document.querySelectorAll('.hue-change'), function (el) {
+    var target = document.querySelector(el.getAttribute('data-target')),
+        display = el.parentNode.getElementsByTagName('span')[0];
 
     var onchange = function (e) {
-        var val = e.target.value;
         e.preventDefault();
+
+        var val = e.target.value;
         display.textContent = val;
-        img.style.webkitFilter = 'hue-rotate' + '(' + val + 'deg)';
+        target.style.webkitFilter = 'hue-rotate' + '(' + val + 'deg)';
     };
 
     el.addEventListener('change', onchange, false);
@@ -50,6 +53,7 @@ document.getElementById('change-img').addEventListener('change', function (e) {
     });
 }, false);
 
+// Title Color and Background color changing
 document.getElementById('separate-imgs').addEventListener('change', function (e) {
     document.querySelector('.container').classList.toggle('separate-imgs');
 }, false);
@@ -67,8 +71,3 @@ document.getElementById('separate-imgs').addEventListener('change', function (e)
 
     el.addEventListener('change', onchange, false);
 });
-
-// document.getElementById('background-color').value = '#e7e7e7';
-// document.getElementById('background-color').addEventListener('change', function (e) {
-//     document.getElementsByTagName('body')[0].style.backgroundColor = e.target.value;
-// }, false);

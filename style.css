@@ -9,6 +9,8 @@ body {
 }
 
 h1 {
+    display: none;
+
     background-color: #000;
     box-sizing: border-box;
     color: #15568a;
@@ -32,18 +34,15 @@ h1 {
 }
 
 form {
+    padding-bottom: 1.2em;
     float: right;
-    width: -webkit-calc(100% - 700px);
+    width: -webkit-calc(100% - 660px);
 }
 
 fieldset {
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
     margin: 1.2em 0;
-}
-
-legend {
-    background-color: #f1f1f1;
 }
 
 fieldset div {
@@ -68,7 +67,7 @@ label i {
     display: block;
     float: left;
     height: 480px;
-    margin: 0 0 1em 0;
+    margin: 1.5em 0 1em 0;
     overflow: hidden;
     position: relative;
     width: 640px;
@@ -90,6 +89,10 @@ label i {
     height: auto;
 }
 
+.separate-imgs img.hidden {
+    height: 0;
+}
+
 .top {
     -webkit-blend-mode: overlay;
     left: -2px;
@@ -104,4 +107,9 @@ label i {
 
 .base {
     z-index: 1;
+}
+
+[role=contentinfo] {
+    font-size: 0.9em;
+    text-align: right;
 }
