@@ -9,8 +9,6 @@ body {
 }
 
 h1 {
-    display: none;
-
     background-color: #000;
     box-sizing: border-box;
     color: #15568a;
@@ -19,7 +17,6 @@ h1 {
     -webkit-transition: opacity 0.2s;
     width: 100%;
     z-index: 10;
-    -webkit-blend-mode: normal;
 }
 
 .separate-imgs h1 {
@@ -67,7 +64,7 @@ label i {
     display: block;
     float: left;
     height: 480px;
-    margin: 1.5em 0 1em 0;
+    margin: 1.8em 0 1em 0;
     overflow: hidden;
     position: relative;
     width: 640px;
@@ -77,6 +74,7 @@ label i {
     display: block;
     position: absolute;
     -webkit-transition: opacity 0.2s;
+    height: 100%;
     width: 100%;
 }
 

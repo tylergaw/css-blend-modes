@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <figure class="nyc">
-                <!-- <h1 class="title">CSS Blend Modes &amp; Hue Rotate Playin'</h1> -->
+                <h1 class="title">CSS Blend Modes &amp; Hue Rotate Playin'</h1>
                 <img class="top" src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
                 <img class="middle" src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
                 <img class="base "src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
@@ -47,7 +47,7 @@
                     </div>
                     <div>
                         <label for="hue-top-img">Hue Rotate:</label>
-                        <input id="hue-top-img" class="hue-change" data-target=".top"
+                        <input id="hue-top-img" class="hue-change" name="hue-change" data-target=".top"
                             type="range" min="0" max="360" value="0">
                         <b data-range="hue-top-img" class="hue-degree"><span>0</span>deg</b>
                     </div>
@@ -84,12 +84,12 @@
                     </div>
                     <div>
                         <label for="hue-middle-img">Hue Rotate:</label>
-                        <input id="hue-middle-img" class="hue-change" data-target=".middle"
+                        <input id="hue-middle-img" class="hue-change" name="hue-change" data-target=".middle"
                             type="range" min="0" max="360" value="0">
                         <b data-range="hue-middle-img" class="hue-degree"><span>0</span>deg</b>
                     </div>
                 </fieldset>
-                <!-- <fieldset>
+                <fieldset>
                     <legend>Title</legend>
                     <div>
                         <label>
@@ -127,7 +127,7 @@
                             <option value="luminosity">luminosity</option>
                         </select>
                     </div>
-                </fieldset> -->
+                </fieldset>
                 <fieldset>
                     <legend>Setup</legend>
                     <div>

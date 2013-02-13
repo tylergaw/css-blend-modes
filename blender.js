@@ -18,7 +18,7 @@
 });
 
 // Hue Rotate
-[].forEach.call(document.querySelectorAll('.hue-change'), function (el) {
+[].forEach.call(document.querySelectorAll('[name=hue-change]'), function (el) {
     var target = document.querySelector(el.getAttribute('data-target')),
         display = el.parentNode.getElementsByTagName('span')[0];
 
@@ -26,8 +26,8 @@
         e.preventDefault();
 
         var val = e.target.value;
-        display.textContent = val;
         target.style.webkitFilter = 'hue-rotate' + '(' + val + 'deg)';
+        display.textContent = val;
     };
 
     el.addEventListener('change', onchange, false);
