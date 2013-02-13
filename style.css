@@ -9,18 +9,31 @@ body {
 }
 
 h1 {
-    clear: both;
+    background-color: #000;
+    box-sizing: border-box;
+    color: #15568a;
+    padding: 0.6em 0.6em;
+    position: absolute;
+    -webkit-transition: opacity 0.2s;
+    width: 100%;
+    z-index: 10;
+    -webkit-blend-mode: normal;
+}
+
+.separate-imgs h1 {
+    opacity: 0;
 }
 
 .container {
-    margin: 1em auto;
+    margin: 1.2em auto;
     min-width: 900px;
+    max-width: 1080px;
     width: 98%;
 }
 
 form {
     float: right;
-    width: -webkit-calc(100% - 660px);
+    width: -webkit-calc(100% - 700px);
 }
 
 fieldset {

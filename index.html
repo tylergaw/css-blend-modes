@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="container">
-            <h1>CSS Blend Modes &amp; Hue Rotate Playin'</h1>
             <figure class="nyc">
+                <h1 class="title">CSS Blend Modes &amp; Hue Rotate Playin'</h1>
                 <img class="top" src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
                 <img class="middle" src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
                 <img class="base "src="http://farm1.staticflickr.com/212/516820881_94ee6d7e60_z.jpg" alt="">
@@ -19,13 +19,13 @@
                     <legend>Top Image</legend>
                     <div>
                         <label>
-                            <input type="checkbox" name="show-img" id="top-img-show"
-                                checked data-img="top"> Show
+                            <input type="checkbox" class="show-hide-toggle"
+                                checked data-target=".top"> Show
                         </label>
                     </div>
                     <div>
                         <label for="mode-top-img">Blend mode:</label>
-                        <select id="mode-top-img" name="blend-mode" data-img="top">
+                        <select id="mode-top-img" class="blend-mode-change" data-target=".top">
                             <option value="normal">normal</option>
                             <option value="plus">plus</option>
                             <option value="multiply">multiply</option>
@@ -55,13 +55,13 @@
                     <legend>Middle Image</legend>
                     <div>
                         <label>
-                            <input type="checkbox" name="show-img" id="mid-img-show"
-                                checked data-img="middle"> Show
+                            <input type="checkbox" class="show-hide-toggle"
+                                checked data-target=".middle"> Show
                         </label>
                     </div>
                     <div>
                         <label for="mode-top-img">Blend mode:</label>
-                        <select id="mode-top-img" name="blend-mode" data-img="middle">
+                        <select id="mode-top-img" class="blend-mode-change" data-target=".middle">
                             <option value="normal">normal</option>
                             <option value="plus">plus</option>
                             <option value="multiply">multiply</option>
@@ -88,16 +88,51 @@
                     </div>
                 </fieldset>
                 <fieldset>
+                    <legend>Title</legend>
+                    <div>
+                        <label>
+                            <input type="checkbox" class="show-hide-toggle"
+                                checked data-target=".title"> Show title
+                        </label>
+                    </div>
+                    <div>
+                        <label for="title-bg-color">Background Color:</label>
+                        <input id="title-bg-color" class="bg-color-change" type="color" data-target=".title">
+                    </div>
+                    <div>
+                        <label for="title-color">Color:</label>
+                        <input id="title-color" class="color-change" type="color" data-target=".title">
+                    </div>
+                    <div>
+                        <label for="title">Blend mode:</label>
+                        <select id="title" class="blend-mode-change" data-target=".title">
+                            <option value="normal">normal</option>
+                            <option value="plus">plus</option>
+                            <option value="multiply">multiply</option>
+                            <option value="screen">screen</option>
+                            <option value="overlay">overlay</option>
+                            <option value="darken">darken</option>
+                            <option value="lighten">lighten</option>
+                            <option value="color-dodge">color-dodge</option>
+                            <option value="color-burn">color-burn</option>
+                            <option value="hard-light">hard-light</option>
+                            <option value="soft-light">soft-light</option>
+                            <option value="difference">difference</option>
+                            <option value="exclusion">exclusion</option>
+                            <option value="hue">hue</option>
+                            <option value="saturation">saturation</option>
+                            <option value="color">color</option>
+                            <option value="luminosity">luminosity</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
                     <legend>Setup</legend>
                     <div>
                         <label>
                             <input type="checkbox" name="separate-imgs" id="separate-imgs"> Separate Images
                             <br><i>You might not be able to see each image depending on its blend mode and the background color</i>
                         </label>
-                    </div>
-                    <div>
-                        <label for="background-color">Background Color:</label>
-                        <input id="background-color" type="color">
                     </div>
                     <div>
                         <label for="change-img">Image:</label>
@@ -115,69 +150,6 @@
                 </fieldset>
             </form>
         </div>
-
-        <script>
-            document.getElementById('change-img').addEventListener('change', function (e) {
-                e.preventDefault();
-
-                [].forEach.call(document.querySelectorAll('.nyc img'), function (el) {
-                    el.setAttribute('src', e.target.value);
-                });
-            }, false);
-
-            // Blending Mode
-            [].forEach.call(document.querySelectorAll('[name=blend-mode]'), function (el) {
-                var imgName = el.getAttribute('data-img'),
-                    img = document.querySelector('.' + imgName);
-
-                el.value = window.getComputedStyle(img).getPropertyValue('-webkit-blend-mode');
-
-                var onchange = function (e) {
-                    e.preventDefault();
-                    img.style.webkitBlendMode = e.target.value;
-                };
-
-                el.addEventListener('change', onchange, false);
-            });
-
-            // Hue Rotate
-            [].forEach.call(document.querySelectorAll('[type=range]'), function (el) {
-                var imgName = el.getAttribute('data-img'),
-                    img = document.querySelector('.' + imgName);
-
-                var id = el.getAttribute('id'),
-                    display = document.querySelector('[data-range=' + id + '] span');
-
-                var onchange = function (e) {
-                    var val = e.target.value;
-                    e.preventDefault();
-                    display.textContent = val;
-                    img.style.webkitFilter = 'hue-rotate' + '(' + val + 'deg)';
-                };
-
-                el.addEventListener('change', onchange, false);
-            });
-
-            // Show Hide image
-            [].forEach.call(document.querySelectorAll('[name=show-img]'), function (el) {
-                var imgName = el.getAttribute('data-img');
-
-                var onchange = function (e) {
-                    var img = document.querySelector('.' + imgName);
-                    img.classList.toggle('hidden');
-                };
-
-                el.addEventListener('change', onchange, false);
-            });
-
-            document.getElementById('separate-imgs').addEventListener('change', function (e) {
-                document.querySelector('.container').classList.toggle('separate-imgs');
-            }, false);
-
-            document.getElementById('background-color').value = '#e7e7e7';
-            document.getElementById('background-color').addEventListener('change', function (e) {
-                document.getElementsByTagName('body')[0].style.backgroundColor = e.target.value;
-            }, false);
-        </script>
+        <script src="blender.js"></script>
     </body>
 </html>
